@@ -1,0 +1,32 @@
+snippet !--
+{{!--
+${0}
+--}}
+endsnippet
+snippet log
+{{log "${1}" $1}}${0}
+endsnippet
+snippet if
+{{#if ${1:value}}}
+${0}
+{{/if}}
+endsnippet
+snippet ife
+{{#if ${1:value}}}
+${2}
+{{else}}
+${3}
+{{/if}}
+endsnippet
+snippet el
+{{else}}
+${0}
+endsnippet
+snippet action
+{{action '$0'}}
+endsnippet
+snippet with
+{{#with ${1:models} as |${2:model}|}}
+${0}
+{{/with}}
+endsnippet
