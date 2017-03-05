@@ -1,0 +1,138 @@
+[pager]
+	diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
+	show = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
+[user]
+	name = Kidon Chu
+	email = kidonchu@gmail.com
+[credential]
+	helper = cache --timeout=36000
+[core]
+	editor = vim
+	autocrlf = false
+	safecrlf = false
+	preloadindex = true
+[alias]
+	co = checkout
+	d = diff
+	ds = diff --staged
+	st = status -sb
+	amend = commit --amend -C HEAD
+	undo = reset --soft HEAD^
+	undoseriously = reset --hard HEAD^
+	ls = log --pretty=format:\"%C(yellow)%h %C(blue)%ad %C(reset)%s%C(red)%d%C(green) [%cn]\" --decorate --date=short
+	lss = log --pretty=format:\"%C(yellow)%h %C(blue)%ad %C(reset)%s%C(red)%d%C(green) [%cn]\" --decorate --date=short -n 10
+	lsme = log --pretty=format:\"%C(yellow)%h %C(blue)%ad %C(reset)%s%C(red)%d%C(green) [%cn]\" --decorate --date=short --first-parent
+	graph = log --graph --pretty=format':%C(yellow)%h%C(red)%d%C(reset) %s %C(green) %an %C(blue)%ar%Creset'
+	track = branch --track
+	cmm = commit -m
+	cmv = commit --verbose
+	s = status
+	ci = commit
+	br = branch
+	type = cat-file -t
+	dump = cat-file -p
+	g = log --graph --pretty=format':%C(yellow)%h%C(red)%d%C(reset) %s %C(green) %an %C(blue)%ar%Creset'
+	gs = log --graph --pretty=format':%C(yellow)%h%C(red)%d%C(reset) %s %C(green) %an %C(blue)%ar%Creset' -n 10
+	gall = log --graph --pretty=format':%C(yellow)%h%C(red)%d%C(reset) %s %C(green) %an %C(blue)%ar%Creset' --all
+	galls = log --graph --pretty=format':%C(yellow)%h%C(red)%d%C(reset) %s %C(green) %an %C(blue)%ar%Creset' --all -10
+	grep = grep --break --heading --line-number
+	noff = merge --no-ff
+	hide = update-index --assume-unchanged
+	unhide = update-index --no-assume-unchanged
+	hiddenfiles = "!f() { git ls-files -v | grep '^[[:lower:]]' | awk '{print $2}'; }; f"
+	pall = pull --all
+	cong = config --global
+	cm = commit
+	diffno = diff --no-ext-diff
+	datetag = !git tag `date \"+%Y%m%d%H%M\"`
+	m = merge
+	p = push
+	pushtags = push origin --tags
+	diffc = diff --cached
+	dry = "!f() { git merge-tree `git merge-base $2 $1` $2 $1; }; f"
+	fp = fetch --prune
+	showfiles = show --pretty="format:" --name-status
+	conflictfiles = diff --name-only --diff-filter=U
+	unstage = reset HEAD
+	contains = branch --contains
+	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+	tbranch = branch -vv
+	revertmerge = revert -m 1
+	abortmerge = merge --abort
+	save = stash save
+[color]
+	ui = true
+
+[diff]
+	tool = vimdiff
+	keepBackup = false
+	trustExitCode = false
+[difftool]
+	tool = meld
+	prompt = false
+[difftool "meld"]
+	cmd = /Applications/Meld.app/Contents/MacOS/Meld "$LOCAL" "$REMOTE"
+  	trustExitCode = true
+[difftool "phpstorm"]
+	cmd = pstorm diff "$LOCAL" "$REMOTE"
+	trustExitCode = false
+[difftool "diffmerge"]
+	cmd = /usr/local/bin/diffmerge.sh "$LOCAL" "$REMOTE"
+	trustExitCode = false
+[difftool "vimdiff"]
+	cmd = vimdiff "$LOCAL" "$REMOTE"
+  	trustExitCode = true
+[merge]
+	tool = meld
+	keepBackup = false
+	conflictstyle = diff3
+[mergetool]
+	prompt = true
+	keepBackup = false
+[mergetool "meld"]
+	cmd =  "$LOCAL" "$REMOTE" "$BASE"
+	cmd = /Applications/Meld.app/Contents/MacOS/Meld --auto-merge "$LOCAL" "$BASE" "$REMOTE" --output="$MERGED"
+	trustExitCode = true
+[mergetool "phpstorm"]
+	cmd = /usr/local/bin/pstorm merge merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+	trustExitCode = false
+[push]
+	default = simple
+
+[color "branch"]
+  current = cyan reverse
+  local = cyan
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta
+  plain = white bold
+  old = red bold
+  new = green bold
+  commit = yellow bold
+  func = green dim
+
+[color "status"]
+  added = green
+  changed = red
+  untracked = cyan
+[gui]
+	tool = git-cola
+	browser = git-cola
+	editor = git-cola
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[mergetool "diffconflicts"]
+	cmd = /usr/local/bin/diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
+[grep]
+	extendRegexp = true
+	lineNumber = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
