@@ -89,7 +89,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim'
 Plug 'svermeulen/vim-easyclip'
-Plug '~/.vim/plugged/kidonchu'
+Plug 'kidonchu/vimscripts'
 
 " }}} Plugins
 
@@ -439,7 +439,9 @@ let g:multi_cursor_next_key='<C-b>'
 " let g:multi_cursor_skip_key='<C-x>'
 " let g:multi_cursor_quit_key='<Esc>'
 " }}}
-
+" {{{ vim-javascript
+let g:javascript_plugin_jsdoc = 1
+" }}}
 " {{{ CamelCaseMotion
 " map <silent> w <Plug>CamelCaseMotion_w
 " map <silent> b <Plug>CamelCaseMotion_b
