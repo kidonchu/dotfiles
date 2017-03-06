@@ -6,7 +6,7 @@ fi
 # How can I live without you, fzf?
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-ZSHRC_DIR=$HOME/zshrc.d
+ZSHRC_DIR=$HOME/.zshrc.d
 for rcFile in $(ls $ZSHRC_DIR); do
 	source "$ZSHRC_DIR/$rcFile"
 done
