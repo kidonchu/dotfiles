@@ -28,7 +28,10 @@ augroup kchu
 	autocmd FileType javascript setlocal commentstring=//\ %s
 	autocmd FileType embertest setlocal commentstring=//\ %s
 	autocmd FileType php setlocal commentstring=//\ %s
-	
+
+	" JSON
+	" easier navigation with lazy-load function names
+	au FileType vim setlocal iskeyword-=#
 
 	" When editing a file, always jump to the last known cursor position.
 	" Don't do it for commit messages, when the position is invalid, or when
