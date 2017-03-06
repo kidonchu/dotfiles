@@ -108,7 +108,7 @@ map Q gq
 " copy current file's name and line number
 nnoremap <leader>cf :let @+=expand("%") . ':' . line(".")<cr>
 " put current timestamp
-inoremap idt <c-r>=strftime("%m/%d/%Y")<cr><esc>o
+inoremap idt<tab> <c-r>=strftime("%m/%d/%Y")<cr><esc>o
 nnoremap ; :
 nnoremap : ;
 vnoremap ; :
