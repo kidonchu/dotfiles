@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins {{{
 
+Plug 'nazo/pt.vim'
 Plug 'tobyS/vmustache'
 Plug 'tobyS/pdv'
 Plug 'jeetsukumaran/vim-indentwise'
@@ -466,9 +467,12 @@ let g:javascript_plugin_jsdoc = 1
 " omap <silent> ie <Plug>CamelCaseMotion_ie
 " xmap <silent> ie <Plug>CamelCaseMotion_ie
 " }}}
-
 " {{{ vim-autoformat
 noremap <leader>af :Autoformat<CR>
+" }}}
+" {{{ pt.vim, platinum searcher
+let g:ptprg="pt --ignore={ctags,dist,tmp,node_modules,bower_components,.idea,vendor,cache,docs} --column --nocolor --context=0"
+nnoremap <leader>pt :Pt<space><c-r><c-w><space>
 " }}}
 
 " {{{ pdv
