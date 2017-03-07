@@ -51,7 +51,7 @@ Plug 'schickling/vim-bufonly'
 Plug 'majutsushi/tagbar'
 Plug 'vim-php/phpctags'
 Plug 'vim-php/tagbar-phpctags.vim'
-Plug 'rking/ag.vim'
+" Plug 'rking/ag.vim'
 Plug 'Chun-Yang/vim-action-ag'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'kristijanhusak/vim-hybrid-material'
@@ -132,6 +132,13 @@ nnoremap <silent> <leader>H :History<cr>
 nnoremap <silent> <leader>R :BTags<cr>
 nnoremap <silent> <leader>T :Tags<cr>
 nnoremap <silent> <leader>U :Buffers<cr>
+command! -bang -nargs=* Ag
+	\ call fzf#vim#ag(<q-args>,
+	\                 <bang>0 ? fzf#vim#with_preview('up:60%')
+	\                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+	\                 <bang>0)
+nnoremap <leader>aa :Ag!<space>
+nnoremap <leader>aw :Ag!<space><c-r><c-w><space>
 " }}}
 " {{{ neocomplete
 let g:neocomplete#enable_at_startup = 1
@@ -282,10 +289,10 @@ set tags+=ctags
 let g:tagbar_phpctags_bin='/usr/local/bin/phpctags'
 " }}}
 "  {{{ Ag, Silver Searcher
-let g:ag_prg = 'ag --ignore=ctags --ignore-dir={dist,tmp,node_modules,bower_components,.idea,vendor,cache} --vimgrep'
-nnoremap <leader>aa :Ag!<space>
-nnoremap <leader>ac :Ag!<space><c-r><c-w><space>
-nnoremap <leader>aw :AgBuffer!<space>
+" let g:ag_prg = 'ag --ignore=ctags --ignore-dir={dist,tmp,node_modules,bower_components,.idea,vendor,cache} --vimgrep'
+" nnoremap <leader>aa :Ag!<space>
+" nnoremap <leader>ac :Ag!<space><c-r><c-w><space>
+" nnoremap <leader>aw :AgBuffer!<space>
 " }}}
 " {{{ FastFold
 let g:fastfold_savehook = 0
