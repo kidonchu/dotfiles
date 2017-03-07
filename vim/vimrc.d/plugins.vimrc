@@ -151,6 +151,13 @@ endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
+" Fix conflict with multiple cursor
+function! Multiple_cursors_before()
+	exe 'NeoCompleteLock'
+endfunction
+function! Multiple_cursors_after()
+	exe 'NeoCompleteUnlock'
+endfunction
 " }}}
 " {{{ NERDTree
 " open a NERDTree automatically when vim starts up if no files were specified
