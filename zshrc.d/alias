@@ -1,3 +1,5 @@
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ack='ack --ignore-dir={dist,tmp,tests,vendor,node_modules,bower_components,.idea}'
 alias showmakefile='cat -e -t -v'
 alias showdbs='mysql -h 10.11.12.13 -u kchu -ptest -e "SHOW DATABASES;"'
@@ -46,6 +48,7 @@ alias vimlibrary='vim -S ~/.vim/sessions/library.vim'
 alias vr='cd ~/vagrant;vagrant reload'
 alias weather='curl wttr.in/Chicago | head -17 | lolcat'
 alias weathertomorrow='curl wttr.in/Chicago | head -27 | tail -10 | lolcat'
+alias th='tail -f hosted.log'
 
 alias l75='ln -sfn e75 ember-app'
 alias l83='ln -sfn e83 ember-app'
