@@ -48,7 +48,6 @@ Plug '~/.vim/plugged/portkey'
 Plug 'scrooloose/syntastic'
 Plug 'ervandew/supertab'
 Plug 'schickling/vim-bufonly'
-Plug 'tpope/vim-unimpaired'
 Plug 'majutsushi/tagbar'
 Plug 'vim-php/phpctags'
 Plug 'vim-php/tagbar-phpctags.vim'
@@ -231,6 +230,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_php_checkers=['php']
+" let g:syntastic_php_phpcs_args='--standard=AC -n'
 au FileType scss :let g:syntastic_check_on_wq = 0
 au FileType scss :let g:syntastic_auto_loc_list = 0
 " }}}
