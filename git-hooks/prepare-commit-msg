@@ -1,36 +1,22 @@
 #!/bin/bash
 
 name=`git symbolic-ref --short -q HEAD`
-pattern='^(feature|bugfix)/([0-9]+)-(.*)'
 
 if [[ $2 != 'merge' ]]; then
+
+	pattern='^(feature|bugfix)/([0-9]+)-(.*)'
+
 	if [[ $name =~ $pattern ]]; then
 
 		storyId=${BASH_REMATCH[2]}
 
 		original=$(cat "$1")
-		contentPattern='\[#[0-9]+\]'
+		contentPattern='\[DEVJIRA-[0-9]+\]'
 		# check if there already is the story number in commit message
 		if [[ $original =~ $contentPattern ]]; then
 			dummy=''
 		else
-			printf "[#"$storyId"]\n$original" > "$1"
-		fi
-	else
-		pattern='^(feature|bugfix)/([A-Z]+-[0-9]+)-(.*)'
-
-		if [[ $name =~ $pattern ]]; then
-
-			storyId=${BASH_REMATCH[2]}
-
-			original=$(cat "$1")
-			contentPattern='\[[A-Z]+-[0-9]+\]'
-			# check if there already is the story number in commit message
-			if [[ $original =~ $contentPattern ]]; then
-				dummy=''
-			else
-				printf "["$storyId"]\n$original" > "$1"
-			fi
+			printf "[DEVJIRA-"$storyId"]\n$original" > "$1"
 		fi
 	fi
 fi
