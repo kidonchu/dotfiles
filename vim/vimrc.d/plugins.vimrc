@@ -483,6 +483,6 @@ nnoremap <leader>pt :Pt<space><c-r><c-w><space>
 " }}}
 
 " {{{ pdv
-let g:pdv_template_dir = $HOME ."/devtools/dotfiles/vim/plugged/pdv/templates_snip"
+let g:pdv_template_dir = $HOME ."/dotfiles/vim/plugged/pdv/templates_snip"
 nnoremap <F2> :call pdv#DocumentWithSnip()<CR>
 " }}}
