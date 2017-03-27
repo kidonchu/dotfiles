@@ -27,3 +27,4 @@ source "$ZSHRC_DIR/vi-mode.zsh"
 
 # .fzf.zsh MUST be sourced after sourcing vi-mode plugin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
