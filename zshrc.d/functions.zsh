@@ -312,7 +312,6 @@ function viim_i_worship_you_forever_you_are_my_god() {
 	pattern1='^(feature|bugfix)/([0-9]+)(-.*)?'
 	currentBranch=$(_git_current_branch)
 	currentDir=$(basename $(pwd))
-	filename="$currentDir.vim"
 
 	if [[ "$currentBranch" =~ "$pattern1" ]]
 	then
@@ -322,9 +321,14 @@ function viim_i_worship_you_forever_you_are_my_god() {
 		elif [[ "$currentDir" =~ "^[hH]osted" ]]; then
 			filename="hosted-$ticketNumber.vim"
 		fi
+	else
+		currentBr="$(echo $currentBranch | sed -E 's_([^ ]*)/([^ ]*)_\1-\2_')"
+		filename="${currentDir}-${currentBr}.vim"
 	fi
 
 	filepath="$HOME/.vim/sessions/$filename"
+
+	echo "Running vim with session: $filepath"
 
 	if [[ -a $filepath ]]
 	then
