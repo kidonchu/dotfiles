@@ -1,3 +1,8 @@
 snippet echom
-echom "${1}: " . $1
+echom "${1}: " . string($1)
+endsnippet
+snippet func
+function! ${1}
+	${0}
+endfunction
 endsnippet
