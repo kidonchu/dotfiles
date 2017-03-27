@@ -4,6 +4,8 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins {{{
 
+Plug 'easymotion/vim-easymotion'
+Plug 'kidonchu/yember'
 Plug 'nazo/pt.vim'
 Plug 'tobyS/vmustache'
 Plug 'tobyS/pdv'
@@ -53,7 +55,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-php/phpctags'
 Plug 'vim-php/tagbar-phpctags.vim'
 " Plug 'rking/ag.vim'
-Plug 'Chun-Yang/vim-action-ag'
+" Plug 'Chun-Yang/vim-action-ag'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'kristijanhusak/vim-hybrid-material'
 " Plug 'sickill/vim-pasta'
@@ -75,7 +77,7 @@ Plug 'sjl/gundo.vim'
 Plug 'matchit.zip'
 Plug 'vitalk/vim-simple-todo'
 Plug 'AndrewRadev/vimrunner'
-" Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 Plug 'xolox/vim-misc'
 Plug 'plasticboy/vim-markdown'
 Plug 'matze/vim-move'
@@ -111,7 +113,7 @@ nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gpl :Dispatch! git pull<cr>
 nnoremap <leader>gps :Dispatch! git push<cr>
-nnoremap <leader>gpr :! gitcli s pr -s<space>
+nnoremap <leader>gpr :Dispatch! gitcli s pr -s<space>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gg :Ggrep 
@@ -171,9 +173,6 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 " {{{ Gundo
 nnoremap <leader>uu :GundoToggle<CR>
 """ Gundo }}}
-" {{{ Easy Align
-" xmap <bar> <Plug>(EasyAlign)
-" }}}
 " {{{ mustache
 let g:mustache_abbreviations = 0
 " }}} 
@@ -286,6 +285,8 @@ endif
 
 au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
 au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+
+nnoremap <F12> :UltiSnipsEdit<CR>
 " }}}
 " {{{ BufOnly
 nnoremap <leader>uo :BufOnly<cr>
@@ -484,5 +485,5 @@ nnoremap <leader>pt :Pt<space><c-r><c-w><space>
 
 " {{{ pdv
 let g:pdv_template_dir = $HOME ."/dotfiles/vim/plugged/pdv/templates_snip"
-nnoremap <F2> :call pdv#DocumentWithSnip()<CR>
+" nnoremap <F2> :call pdv#DocumentWithSnip()<CR>
 " }}}

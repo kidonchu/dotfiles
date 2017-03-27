@@ -58,6 +58,8 @@ augroup kchu
 	autocmd FileType markdown setlocal textwidth=100
 	autocmd FileType markdown setlocal expandtab
 
+	autocmd FileType vim setlocal fo+=t
+
 	" move one-level up after drilling down in git tree object
 	autocmd User fugitive 
 	  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |

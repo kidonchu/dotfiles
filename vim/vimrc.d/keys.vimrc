@@ -3,24 +3,25 @@ nnoremap g/ g,
 nnoremap <leader>dc :diffoff!<cr><c-w>l:bd<cr>
 nnoremap <leader>do :DiffOrig<cr>
 nnoremap <leader>gvp /^*\(.*Merge.*\)\@!.*$<cr>
-nnoremap <leader>sb vip:sort<cr>
+" nnoremap <leader>sb vip:sort<cr>
 nnoremap <silent> <leader><leader>r :MRU<cr>
-nnoremap <silent> <leader><leader>wh :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " Diff with original file
 command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 vnoremap <leader>rp :s/\<update\>\\|\<select\>\\|\<from\>\\|\<where>\\|\<left join\>\\|\<inner join\>\\|\<group by\>\\|\<order by\>/\r&<cr><esc>
-vnoremap <leader>fs :s/\v[\t ]{2,}/ /<cr>:s/\v(SELECT\|FROM\|WHERE\|AND)/\r\1<cr>:noh<cr><esc>
-nnoremap <leader>fs vip:s/\v[\t ]{2,}/ /<cr>:s/\v(SELECT\|FROM\|WHERE\|AND)/\r\1<cr>:noh<cr><esc>
 
 " Figure out which syntax rule is applied to word under cursor
 map <leader><leader>s :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 	\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 	\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" source $MYVIMRC reloads the saved $MYVIMRC
-nnoremap <leader>sv :source $MYVIMRC<cr>
-" opens $MYVIMRC for editing, or use :tabedit $MYVIMRC
-nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap <Leader>L :<C-u>execute 'file '.fnameescape(resolve(expand('%:p')))<bar>
+	\ call fugitive#detect(fnameescape(expand('%:p:h')))<CR>
+
+" " source $MYVIMRC reloads the saved $MYVIMRC
+" nnoremap <leader>sv :source $MYVIMRC<cr>
+" " opens $MYVIMRC for editing, or use :tabedit $MYVIMRC
+" nnoremap <leader>ev :e $MYVIMRC<cr>
 
 " {{{ Buffer: u/U
 " close current buffer
@@ -45,7 +46,7 @@ nnoremap <leader>wx :cclose<cr>
 nnoremap <leader>ws :split<cr>
 " split vertically
 nnoremap <leader>wv :vsplit<cr>
-" close winow
+" close window
 nnoremap <leader>wq :close<cr>
 " resize panes
 nnoremap <silent> <Right> :vertical resize +10<cr>
@@ -100,7 +101,7 @@ nnoremap N Nzz
 
 " }}}
 " {{{ Folding
-nnoremap - za
+" nnoremap - za
 " }}}
 " {{{ MISC
 " Don't use Ex mode, use Q for formatting
@@ -114,6 +115,10 @@ nnoremap : ;
 vnoremap ; :
 vnoremap : ;
 nnoremap <leader>r :redraw!<cr>
+" For each time K has produced timely, useful results, I have pressed it 10,000
+" times without meaning to, triggering an annoying delay.
+nnoremap K <nop>
+nnoremap \ <C-^>
 " }}}
 
 " {{{ ember
