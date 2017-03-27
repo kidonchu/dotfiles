@@ -23,5 +23,7 @@ if ! zgen saved; then
 	zgen save
 fi
 
+source "$ZSHRC_DIR/vi-mode.zsh"
+
 # .fzf.zsh MUST be sourced after sourcing vi-mode plugin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
