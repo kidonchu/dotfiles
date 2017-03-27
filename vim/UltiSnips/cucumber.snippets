@@ -1,0 +1,16 @@
+snippet sc
+Scenario: Retrieve deals $0
+endsnippet
+snippet pr
+And print response
+endsnippet
+snippet amodelwithfields
+And there is a ${1:model} with fields:
+	|id|1|
+endsnippet
+snippet equalto
+And the JSON node "${1:deals[0].title}" should be equal to "${2:My First Deal}"${0}
+endsnippet
+snippet element
+And the JSON node "${1:goals}" should have ${2:3} elements${0}
+endsnippet
