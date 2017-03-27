@@ -4,7 +4,7 @@ name=`git symbolic-ref --short -q HEAD`
 
 if [[ $2 != 'merge' ]]; then
 
-	pattern='^(feature|bugfix)/([0-9]+)-(.*)'
+	pattern='^(feature|bugfix)/([0-9]+)(-.*)?'
 
 	if [[ $name =~ $pattern ]]; then
 
