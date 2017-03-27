@@ -102,24 +102,6 @@ filetype plugin indent on
 """"""""""""""""""""
 "" Plugin Options ""
 """"""""""""""""""""
-" {{{ fugitive
-function! GdiffInTab()
-	tabedit % 
-	Gdiff
-endfunction
-command! GdiffInTab tabedit %|Gdiff
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gpl :Dispatch! git pull<cr>
-nnoremap <leader>gps :Dispatch! git push<cr>
-nnoremap <leader>gpr :Dispatch! gitcli s pr -s<space>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gg :Ggrep 
-nnoremap <leader>gl :Glog<cr>
-nnoremap <leader>gb :Gbrowse<cr>
-" }}}
 " {{{ fzf
 imap <c-x><c-l> <plug>(fzf-complete-line)
 let $FZF_DEFAULT_COMMAND= 'ag -g ""'
