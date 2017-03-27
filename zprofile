@@ -16,7 +16,15 @@ if [[ -z "$LANG" ]]; then
 fi
 # }}}
 
-# # {{{ Paths
+# {{{ Paths
+path=(
+	/usr/local/{bin,sbin}
+	'/Users/kchu/projects/go/bin'
+	'/Users/kchu/.composer/vendor/bin'
+	$path
+)
+# }}}
+
 # # Ensure path arrays do not contain duplicates.
 # typeset -gU cdpath fpath mailpath path
 
@@ -24,15 +32,6 @@ fi
 # # cdpath=(
 # #   $cdpath
 # # )
-
-# # Set the list of directories that Zsh searches for programs.
-# path=(
-# 	/usr/local/{bin,sbin}
-# 	'/Users/kchu/projects/go/bin'
-# 	'/Users/kchu/.composer/vendor/bin'
-# 	$path
-# )
-# # }}}
 
 # # {{{ Less
 # # Set the default Less options.
