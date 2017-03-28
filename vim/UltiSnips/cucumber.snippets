@@ -1,5 +1,5 @@
 snippet sc
-Scenario: Retrieve deals $0
+Scenario: Delete deal $0
 endsnippet
 snippet pr
 And print response
@@ -13,4 +13,7 @@ And the JSON node "${1:deals[0].title}" should be equal to "${2:My First Deal}"$
 endsnippet
 snippet element
 And the JSON node "${1:goals}" should have ${2:3} elements${0}
+endsnippet
+snippet rn
+@run-now
 endsnippet
