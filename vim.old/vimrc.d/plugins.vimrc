@@ -4,6 +4,8 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins {{{
 
+Plug '2072/php-indenting-for-vim'
+Plug 'shawncplus/phpcomplete.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'kidonchu/yember'
 Plug 'nazo/pt.vim'

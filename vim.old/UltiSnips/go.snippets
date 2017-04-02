@@ -1,0 +1,23 @@
+snippet ifnil
+if ${0}err != nil {
+	log.Fatal(err)
+}
+endsnippet
+snippet err'
+if ${0}err != nil {
+	return "", err
+}
+endsnippet
+snippet lf
+log.Fatal(${0})
+endsnippet
+snippet type
+type ${1:TypeName} struct {
+	${0}
+}
+endsnippet
+snippet funct
+func (${1}) ${2:FuncName}(${3}) {
+	${0}
+}
+endsnippet
