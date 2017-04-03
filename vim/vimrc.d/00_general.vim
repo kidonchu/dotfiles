@@ -51,7 +51,8 @@ set ruler        " show cursor position always
 set noerrorbells " don't beep
 set showcmd      " show command keys in status line
 set visualbell   " don't beep
-set shortmess=a  " decrease cmd line message size
+set shortmess=at  " decrease cmd line message size
+set cmdheight=1
 
 """ selecting text
 
