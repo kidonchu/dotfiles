@@ -6,6 +6,7 @@ alias showdbs='mysql -h 10.11.12.13 -u kchu -ptest -e "SHOW DATABASES;"'
 alias celar='clear'
 alias lear='clear'
 alias composer='php /usr/local/bin/composer.phar'
+alias cpcmd="fc -l | tail -n 1 | sed -E 's/\s?[0-9]+//' | sed -E 's/^ *//' | pbcopy"
 alias cpfeaturebr="git st | grep '##' | awk '{print \$2}' | awk -F'feature/' '{print \$2}' | awk -F'.' '{print \$1}' | tr -d '\\n'| pbcopy"
 alias cpbugfixbr="git st | grep '##' | awk '{print \$2}' | awk -F'bugfix/' '{print \$2}' | awk -F'.' '{print \$1}' | tr -d '\\n'| pbcopy"
 alias cr='cd ~/vagrant/dev/chrome'
