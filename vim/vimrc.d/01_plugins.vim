@@ -16,6 +16,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/syntastic', { 'on': [] }
 Plug 'Shougo/neocomplete.vim'
 Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-unimpaired'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'tpope/vim-endwise'
 
 " php
 Plug 'shawncplus/phpcomplete.vim'
