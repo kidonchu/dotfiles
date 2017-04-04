@@ -7,5 +7,12 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_php_checkers=['php']
 " let g:syntastic_php_phpcs_args='--standard=AC -n'
-au FileType scss :let g:syntastic_check_on_wq = 0
-au FileType scss :let g:syntastic_auto_loc_list = 0
+let g:syntastic_loc_list_height = 3
+
+augroup au_syntastic
+	autocmd!
+	autocmd BufEnter *.scss :let g:syntastic_check_on_wq = 0
+		\| :let g:syntastic_auto_loc_list = 0
+	autocmd BufLeave *.scss :let g:syntastic_check_on_wq = 1
+		\| :let g:syntastic_auto_loc_list = 1
+augroup END
