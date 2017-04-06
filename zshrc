@@ -28,3 +28,6 @@ source "$ZSHRC_DIR/vi-mode.zsh"
 # .fzf.zsh MUST be sourced after sourcing vi-mode plugin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# let's give the terminal a makeup
+bash ~/.base16-tomorrow-night.sh
