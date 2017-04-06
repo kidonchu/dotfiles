@@ -1,6 +1,9 @@
 nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <leader>pi :PlugInstall<cr>
 
+" remap number increment key to <C-I> due to tmux prefix conflict
+nnoremap <C-I> <C-A>
+
 " save file with shift-s
 nnoremap S :w<cr>
 
