@@ -1,0 +1,18 @@
+snippet eq "JSON node equal to" b
+And the JSON node "${1}" should be equal to "${2}"
+endsnippet
+snippet resp "response status should be" b
+Then the response status code should be ${1:200}
+endsnippet
+snippet contain "JSON node should (not) contain" b
+And the JSON node "${1}" should ${2:not }contain "${3}"
+endsnippet
+snippet exist "JSON node should (not) exist" b
+And the JSON node "${1}" should ${2:not }exist
+endsnippet
+snippet rn "@run-now" b
+@run-now
+endsnippet
+snippet pr "print response" b
+And print response
+endsnippet

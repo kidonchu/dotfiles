@@ -1,0 +1,17 @@
+snippet cl "console.log()" b
+console.log(${1})
+endsnippet
+snippet cg "console.log(this.get())" b
+console.log(this.get('${1}'));
+endsnippet
+snippet cf "console.log('', )" b
+console.log("$1", ${1});
+endsnippet
+snippet => "() => {}" i
+(${1}) => {${0}}
+endsnippet
+snippet dep "{{#dependentProperties}}" i
+{{#dependentProperties}}
+* ${0}
+* {{/dependentProperties}}
+endsnippet
