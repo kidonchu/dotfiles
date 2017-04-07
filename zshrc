@@ -19,6 +19,8 @@ if ! zgen saved; then
 	zgen prezto git
 	zgen prezto fancy-ctrl-z
 
+	zgen load /Users/kchu/.zshrc.d/cloudapp/cloudapp.plugin.zsh
+
 	# save all to init script
 	zgen save
 fi
