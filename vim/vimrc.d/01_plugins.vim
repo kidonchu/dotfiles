@@ -19,11 +19,20 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-unimpaired'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tpope/vim-endwise'
+Plug 'godlygeek/tabular'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'schickling/vim-bufonly'
 
 " php
 Plug 'shawncplus/phpcomplete.vim'
+Plug 'StanAngeloff/php.vim'
+Plug 'tobyS/pdv'
 
 " javascript
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'pangloss/vim-javascript'
+Plug 'tobyS/vmustache'
+Plug 'kidonchu/yember'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'

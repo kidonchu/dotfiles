@@ -26,6 +26,16 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
+" Fix conflict with multiple cursor
+function! Multiple_cursors_before()
+	exe 'NeoCompleteLock'
+endfunction
+function! Multiple_cursors_after()
+	exe 'NeoCompleteUnlock'
+endfunction
+
+" inoremap <expr><C-D> neocomplete#start_manual_complete('omni')
+
 " Enable heavy omni completion.
 " if !exists('g:neocomplete#sources#omni#input_patterns')
 " 	let g:neocomplete#sources#omni#input_patterns = {}
@@ -33,14 +43,14 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 " let g:neocomplete#sources#omni#input_patterns.php =
 " 	\ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 
-if !exists('g:neocomplete#delimiter_patterns')
-	let g:neocomplete#delimiter_patterns= {}
-endif
-let g:neocomplete#delimiter_patterns.vim = ['#']
-let g:neocomplete#delimiter_patterns.php = ['::', '->']
+" if !exists('g:neocomplete#delimiter_patterns')
+" 	let g:neocomplete#delimiter_patterns= {}
+" endif
+" let g:neocomplete#delimiter_patterns.vim = ['#']
+" let g:neocomplete#delimiter_patterns.php = ['::', '->']
 
-if !exists('g:neocomplete#force_omni_input_patterns')
-	let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.php =
-	\ '[^. \t]->\|\h\w*::\|\(new\|use\|extends\|implements\)\s'
+" if !exists('g:neocomplete#force_omni_input_patterns')
+" 	let g:neocomplete#force_omni_input_patterns = {}
+" endif
+" let g:neocomplete#force_omni_input_patterns.php =
+" 	\ '[^. \t]->\|\h\w*::\|\(new\|use\|extends\|implements\)\s'

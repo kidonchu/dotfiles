@@ -1,6 +1,14 @@
 nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <leader>pi :PlugInstall<cr>
 
+" copy current file's name and line number
+nnoremap <leader>cf :let @+=expand("%") . ':' . line(".")<cr>
+
+" Figure out which syntax rule is applied to word under cursor
+nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+	\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+	\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " remap number increment key to <C-I> due to tmux prefix conflict
 nnoremap <C-I> <C-A>
 
@@ -29,7 +37,7 @@ nnoremap \ <C-^>
 " use very-magic regex by default
 nnoremap / /\v
 " clear out highlighed search results as well as search term
-nnoremap <silent> <leader>/ :let @/ = "" <bar> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR>
+nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR>
 " }}}
 
 " {{{ Buffer: u/U
