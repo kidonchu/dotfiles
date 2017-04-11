@@ -45,6 +45,8 @@ function! GetCucumberIndent()
 		return indent(v:lnum-1) + sw
 	elseif prevLine =~# '\v\{$' && cline !~# '\v\}$'
 		return indent(v:lnum-1) + sw
+	elseif prevLine =~# '\v\{$' && cline =~# '\v\}$'
+		return indent(v:lnum-1)
 	elseif prevLine =~# '\v\}$' && cline =~# '\v"""'
 		return indent(v:lnum-1) - sw
 	elseif cline =~# '\v\}$'
