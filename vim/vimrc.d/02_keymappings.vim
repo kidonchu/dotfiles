@@ -1,6 +1,17 @@
 nnoremap <leader>sv :source ~/.vimrc<cr>
 nnoremap <leader>pi :PlugInstall<cr>
 
+" Shortcut to redraw screen
+nnoremap <leader><C-r> :redraw!<CR>
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-u> <C-g>u<C-u>
+
+" edit original file linked by symlink
+nnoremap <Leader>L :<C-u>execute 'file '.fnameescape(resolve(expand('%:p')))<bar>
+	\ call fugitive#detect(fnameescape(expand('%:p:h')))<CR>
+
 " copy current file's name and line number
 nnoremap <leader>cf :let @+=expand("%") . ':' . line(".")<cr>
 
