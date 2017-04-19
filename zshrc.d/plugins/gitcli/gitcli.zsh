@@ -23,8 +23,8 @@ source ${__dir}/messages.zsh
 source ${__dir}/utils.zsh
 
 # command stored in $1, subcommand stored in $2
-cmd="${1:-}"
-subcmd="${2:-}"
+cmd="${1}"
+subcmd="${2}"
 
 if [[ -z "${cmd}" || -z "${subcmd}" ]]; then
 	echo "usage: ${__base} <command> <subcommand> [-r] [file ...]"
@@ -32,7 +32,7 @@ if [[ -z "${cmd}" || -z "${subcmd}" ]]; then
 fi
 
 if [[ "${cmd}" != "s" && "${cmd}" != "story" ]]; then
-	echo "unsupported command: ${cmd}"
+	_gitcli_error "Unsupported command: ${cmd}"
 	echo "only 'story' command is supported at the moment"
 	exit 1
 fi
@@ -42,7 +42,8 @@ shift 2
 
 case "${subcmd}" in
 	n | new)
-		echo "new me"
+		source ${__dir}/newstory.zsh
+		newstory "$@"
 		;;
 	s | switch)
 		source ${__dir}/switchstory.zsh
