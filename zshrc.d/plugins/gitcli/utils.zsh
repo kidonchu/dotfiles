@@ -13,6 +13,22 @@ function _gitcli_current_branch() {
 	echo "${branch}"
 }
 
+function _gitcli_create() {
+
+	_gitcli_process "Creating new branch ${newBranch} from ${srcBranch}"
+
+	newBranch=${1}
+	srcBranch=${2}
+
+	# first, check if we already have a branch with same name
+	if [[ ! -z `git branch --list ${1}` ]]; then
+		_gitcli_notice "Branch ${newBranch} already exists"
+		return 0
+	fi
+
+	git branch "${newBranch}" ${srcBranch}
+}
+
 function _gitcli_checkout() {
 
 	fromBranch=`_gitcli_current_branch`
