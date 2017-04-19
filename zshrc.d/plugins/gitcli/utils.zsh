@@ -69,6 +69,20 @@ function _gitcli_checkout() {
 	fi
 }
 
+
+function _gitcli_find_src_branch() {
+
+	src=${1}
+
+	srcBranch=`_gitcli_get_config "story.source.${src}"`
+	if [[ -z "${srcBranch}" ]]; then
+		_gitcli_error "Unable to find source branch with ${src}"
+		exit 1
+	fi
+
+	echo "${srcBranch}"
+}
+
 function _gitcli_choose_one() {
 
 	choices=${1}
