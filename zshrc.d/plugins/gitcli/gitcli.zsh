@@ -5,7 +5,7 @@ set -o errexit
 # exit when trying to use undeclared variable
 # set -o nounset
 # fail with piped command too
-set -o pipefail
+# set -o pipefail
 
 if [ ! -z "${DEBUG_GITCLI-}" ]; then
 	# trace what gets executed
