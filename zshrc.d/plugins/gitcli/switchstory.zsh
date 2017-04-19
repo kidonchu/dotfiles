@@ -14,7 +14,7 @@ function switchstory() {
 				recent=1
 				;;
 			*) # unknown flag
-				echo >&2 "usage: gitcli story [-r|--recent] [-p|--pattern 'regex_pattern']"
+				echo >&2 "usage: gitcli story switch [-r|--recent] [-p|--pattern 'regex_pattern']"
 				exit 1;;
 		esac
 		shift
