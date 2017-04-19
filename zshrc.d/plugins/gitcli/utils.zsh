@@ -69,6 +69,59 @@ function _gitcli_checkout() {
 	fi
 }
 
+function _gitcli_open_pr_url() {
+
+	# prepare base information
+	base="${1}"
+	baseRemote=`echo ${base} | cut -d'/' -f 1`
+	baseBranch=`echo ${base} | cut -d'/' -f 2`
+	baseUri=`_gitcli_get_config "remote.${baseRemote}.url" | sed 's/git@github.com://' | sed 's/\.git//'`
+	baseOwner=`echo ${baseUri} | cut -d'/' -f 1`
+	baseRepo=`echo ${baseUri} | cut -d'/' -f 2`
+
+	#prepare head information
+	headBranch=`_gitcli_current_branch`
+	headRemote=`_gitcli_get_config "branch.${headBranch}.remote"`
+	headUri=`_gitcli_get_config "remote.${headRemote}.url" | sed 's/git@github.com://' | sed 's/\.git//'`
+	headOwner=`echo ${headUri} | cut -d'/' -f 1`
+	headRepo=`echo ${headUri} | cut -d'/' -f 2`
+
+	url=`printf "https://github.com/%s/%s/compare/%s...%s:%s?expand=1" \
+		"${baseOwner}" "${baseRepo}" "${baseBranch}" "${headOwner}" "${headBranch}"`
+
+	open "${url}"
+}
+
+function _gitcli_create_pr() {
+
+	# prepare headers
+	headers=()
+
+	token=`_gitcli_get_config "story.oauthtoken"`
+	if [[ -z "${token}" ]]; then
+		_gitcli_error "Missing oauth token. Add one using `git config story.oauthtoken <token>`"
+		exit 1
+	fi
+
+	headers["Authorization"]="token ${token}"
+	headers["Accept"]="application/vnd.github.polaris-preview+json"
+	headers["Content-Type"]="application/json"
+
+	title="Title"
+	body="Body"
+	head="kidonchu:test/feature3"
+	base="master"
+
+	body=`jq -n --argjson title "${title}" --argjson body "${body}"`
+
+	echo "body:" $body
+
+	owner="kidonchu"
+	repo="test-repo"
+	url=`sprinf "https://api.github.com/repos/%s/%s/pulls" "${owner}" "${repo}"`
+
+	echo "url:" $url
+}
 
 function _gitcli_find_src_branch() {
 
