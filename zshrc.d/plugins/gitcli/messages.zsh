@@ -4,7 +4,7 @@ SUCCESS="$(tput setaf 2)SUCCESS: $(tput sgr0)"
 NOTICE="$(tput setaf 4)NOTICE: $(tput sgr0)"
 
 function _gitcli_error() {
-	echo ${ERROR}${1}
+	echo >&2 ${ERROR}${1}
 }
 
 function _gitcli_process() {
