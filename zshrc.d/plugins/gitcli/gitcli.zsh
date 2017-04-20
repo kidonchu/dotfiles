@@ -59,4 +59,6 @@ case "${subcmd}" in
 		;;
 esac
 
+_gitcli_success
+
 exit 0

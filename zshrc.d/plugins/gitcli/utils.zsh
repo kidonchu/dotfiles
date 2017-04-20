@@ -15,7 +15,7 @@ function _gitcli_current_branch() {
 
 function _gitcli_create() {
 
-	_gitcli_process "Creating new branch ${newBranch} from ${srcBranch}"
+	_gitcli_process "Preparing to create new branch ${newBranch} from ${srcBranch}"
 
 	newBranch=${1}
 	srcBranch=${2}
@@ -25,6 +25,10 @@ function _gitcli_create() {
 		_gitcli_notice "Branch ${newBranch} already exists"
 		return 0
 	fi
+
+	_gitcli_fetch_all
+
+	_gitcli_process "Creating new branch ${newBranch} from ${srcBranch}"
 
 	git branch "${newBranch}" ${srcBranch}
 }
@@ -55,7 +59,9 @@ function _gitcli_checkout() {
 	# if there is last stash for the switched branch, pop that out
 	laststash=`_gitcli_get_config "branch.${toBranch}.laststash"`
 	if [[ ! -z "${laststash}" ]]; then
-		_gitcli_process "Popping out last stash"
+
+		_gitcli_process "Preparing to pop out last stash"
+
 		stashIndex=0
 		stashes=`git reflog show stash --pretty=format:%H`
 		for stash in ${stashes}; do
@@ -64,6 +70,9 @@ function _gitcli_checkout() {
 			fi
 			((stashIndex++))
 		done
+
+		_gitcli_process "Popping out stash@{${stashIndex}}"
+
 		git stash pop "stash@{${stashIndex}}"
 		git config "branch.${toBranch}.laststash" ""
 	fi
@@ -73,12 +82,16 @@ function _gitcli_pull() {
 
 	fromBranch=${1}
 
+	_gitcli_process "Preparing to pull from ${fromBranch}"
+
 	# check to see if there are things to be stashed
 	hasChanges=`git status -s`
 	if [[ ! -z "${hasChanges}" ]]; then
 		_gitcli_error "You have changes. Resolve them first"
 		exit 1
 	fi
+
+	_gitcli_fetch_all
 
 	_gitcli_process "Pulling from ${fromBranch}"
 
@@ -90,8 +103,11 @@ function _gitcli_pull() {
 
 function _gitcli_open_pr_url() {
 
-	# prepare base information
 	base="${1}"
+
+	_gitcli_process "Preparing to open Pull Request URL with base ${base}"
+
+	# prepare base information
 	baseRemote=`echo ${base} | cut -d'/' -f 1`
 	baseBranch=`echo ${base} | cut -d'/' -f 2`
 	baseUri=`_gitcli_get_config "remote.${baseRemote}.url" | sed 's/git@github.com://' | sed 's/\.git//'`
@@ -111,10 +127,12 @@ function _gitcli_open_pr_url() {
 	open "${url}"
 }
 
-function _gitcli_create_pr() {
+function _gitcli_fetch_all() {
+	_gitcli_process "Fetching all remotes"
+	git fetch --all
+}
 
-	# prepare headers
-	headers=()
+function _gitcli_create_pr() {
 
 	token=`_gitcli_get_config "story.oauthtoken"`
 	if [[ -z "${token}" ]]; then
@@ -122,22 +140,40 @@ function _gitcli_create_pr() {
 		exit 1
 	fi
 
-	headers["Authorization"]="token ${token}"
-	headers["Accept"]="application/vnd.github.polaris-preview+json"
-	headers["Content-Type"]="application/json"
+	# prepare headers
+	headers=()
+	headers+=("Authorization: token ${token}")
+	headers+=("Accept: application/vnd.github.polaris-preview+json")
+	headers+=("Content-Type: application/json")
+
+	cmd="curl -X POST"
+	for header in "${headers[@]}"; do
+		cmd="${cmd} -H '${header}'"
+	done
+
+	echo "cmd:" $cmd
 
 	title="Title"
 	body="Body"
 	head="kidonchu:test/feature3"
 	base="master"
 
-	body=`jq -n --argjson title "${title}" --argjson body "${body}"`
+	title=`cat ./.git/PR_BODY_MESSAGE.md`
+
+	body=`echo "<?php echo json_encode(array('title' => '${title}')); ?>" | php`
+
+	# haha="jq -n"
+	# haha="${haha} --argjson title '\"${title}\"'"
+	# haha="${haha} '{\$title}'"
+	# echo "haha:" $haha
+	# body=`${haha}`
 
 	echo "body:" $body
 
 	owner="kidonchu"
 	repo="test-repo"
 	url=`sprinf "https://api.github.com/repos/%s/%s/pulls" "${owner}" "${repo}"`
+	curl -i -X POST -H 'Authorization: token d9aa53e1fc3b3cb1ed9cdcbfd637f0e8a1ce4a2a' -H 'Content-Type: application/json' -H 'Accept: application/vnd.github.polaris-preview+json' -d '{"title": "Title","base":"master","head":"feature/test3"}' https://api.github.com/repos/kidonchu/test-repo/pulls
 
 	echo "url:" $url
 }
@@ -159,7 +195,7 @@ function _gitcli_choose_one() {
 
 	choices=${1}
 
-	PS3=">>> Choose a branch to checkout: "
+	PS3=">>> Choose one: "
 	select choice in "${choices[@]}"
 	do
 		case ${choice} in

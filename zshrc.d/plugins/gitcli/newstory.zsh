@@ -50,8 +50,6 @@ function newstory() {
 		remoteTarget="origin"
 	fi
 	git push -u "${remoteTarget}" "${newBranch}"
-
-	_gitcli_success "Done"
 }
 
 function print_usage() {

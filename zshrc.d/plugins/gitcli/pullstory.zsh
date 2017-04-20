@@ -26,8 +26,6 @@ function pullstory() {
 
 	# open browser with PR url
 	_gitcli_pull "${srcBranch}"
-
-	_gitcli_success "Done"
 }
 
 function print_usage() {

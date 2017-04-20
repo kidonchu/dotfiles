@@ -12,7 +12,9 @@ function _gitcli_process() {
 }
 
 function _gitcli_success() {
-	echo ${SUCCESS}${1}
+	echo "$(tput setaf 2)|---------------------------|"
+	echo "| Job Done. Go Break a LEG! |"
+	echo "|---------------------------|$(tput sgr0)"
 }
 
 function _gitcli_notice() {
