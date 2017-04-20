@@ -69,6 +69,25 @@ function _gitcli_checkout() {
 	fi
 }
 
+function _gitcli_pull() {
+
+	fromBranch=${1}
+
+	# check to see if there are things to be stashed
+	hasChanges=`git status -s`
+	if [[ ! -z "${hasChanges}" ]]; then
+		_gitcli_error "You have changes. Resolve them first"
+		exit 1
+	fi
+
+	_gitcli_process "Pulling from ${fromBranch}"
+
+	remote=`echo ${fromBranch} | cut -d'/' -f 1`
+	branch=`echo ${fromBranch} | cut -d'/' -f 2`
+
+	git pull "${remote}" "${branch}"
+}
+
 function _gitcli_open_pr_url() {
 
 	# prepare base information
