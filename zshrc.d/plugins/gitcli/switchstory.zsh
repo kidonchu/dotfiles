@@ -25,6 +25,8 @@ function switchstory() {
 	else
 		switch_to_pattern "${pattern}"
 	fi
+
+	_gitcli_success "Done"
 }
 
 function switch_to_recent() {

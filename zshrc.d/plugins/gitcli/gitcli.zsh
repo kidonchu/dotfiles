@@ -50,9 +50,13 @@ case "${subcmd}" in
 		switchstory "$@"
 		;;
 	pr | pullrequest)
-		echo "pr me"
+		source ${__dir}/prstory.zsh
+		prstory "$@"
 		;;
 	p | pull)
-		echo "pull me"
+		source ${__dir}/pullstory.zsh
+		pullstory "$@"
 		;;
 esac
+
+exit 0
