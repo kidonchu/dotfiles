@@ -1,7 +1,7 @@
 function newstory() {
 
 	if [[ $# -lt 4 ]]; then
-		print_usage
+		echo >&2 `print_usage`
 		exit 1
 	fi
 
@@ -20,7 +20,7 @@ function newstory() {
 				shift
 				;;
 			*) # unknown flag
-				echo >&2 "usage: gitcli story new [-s|--source <source>] [-b|--branch <new_branch>]"
+				echo >&2 `print_usage`
 				exit 1;;
 		esac
 		shift
