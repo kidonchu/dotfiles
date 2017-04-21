@@ -101,6 +101,20 @@ function _gitcli_pull() {
 	git pull "${remote}" "${branch}"
 }
 
+function _gitcli_copy_issue_to_clipboard() {
+
+	branch=`_gitcli_current_branch`
+	pattern='^(feature|bugfix)/([0-9]+)(-.*)?'
+
+	if [[ "$branch" =~ $pattern ]]; then
+		# if issue id exists in the branch name, copy to clipboard
+		issueId=${BASH_REMATCH[2]}
+		echo `printf "[DEVJIRA-%s]" ${issueId}` | pbcopy
+	else
+		_gitcli_notice "Unable to extract issue id from ${branch}"
+	fi
+}
+
 function _gitcli_open_pr_url() {
 
 	base="${1}"

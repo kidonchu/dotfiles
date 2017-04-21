@@ -25,9 +25,11 @@ function prstory() {
 	srcBranch=`_gitcli_find_src_branch "${src}"`
 
 	# open browser with PR url
-	# _gitcli_open_pr_url "${srcBranch}"
+	_gitcli_open_pr_url "${srcBranch}"
 
-	_gitcli_create_pr "#{srcBranch}"
+	_gitcli_copy_issue_to_clipboard
+
+	# _gitcli_create_pr "#{srcBranch}"
 }
 
 function print_usage() {
