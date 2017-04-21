@@ -138,6 +138,8 @@ function _gitcli_open_pr_url() {
 	url=`printf "https://github.com/%s/%s/compare/%s...%s:%s?expand=1" \
 		"${baseOwner}" "${baseRepo}" "${baseBranch}" "${headOwner}" "${headBranch}"`
 
+	_gitcli_process "Opening Pull Request URL with base ${base}"
+
 	open "${url}"
 }
 
