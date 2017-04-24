@@ -1,0 +1,3 @@
+[submodule "zshrc.d/plugins/gitcli"]
+	path = zshrc.d/plugins/gitcli
+	url = git@github.com:kidonchu/zsh-gitcli.git
