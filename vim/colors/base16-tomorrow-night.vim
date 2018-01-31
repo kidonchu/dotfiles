@@ -298,6 +298,11 @@ call <sid>hi("BookmarkAnnotationLine","", "", s:cterm05, "", "", "")
 
 call <sid>hi("mkdInlineURL","", "", s:cterm05, "", "underline", "")
 
+"Buftabline
+call <sid>hi("BufTabLineCurrent","", "", s:cterm01, s:cterm0B, "bold", "")
+call <sid>hi("BufTabLineActive","", "", s:cterm05, s:cterm02, "", "")
+call <sid>hi("BufTabLineHidden","", "", s:cterm05, s:cterm01, "", "")
+
 " Remove functions
 delf <sid>hi
 
