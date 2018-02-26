@@ -378,6 +378,23 @@ call <sid>hi("StartifySelect",   s:gui0C, "", s:cterm0C, "", "", "")
 call <sid>hi("StartifySlash",    s:gui03, "", s:cterm03, "", "", "")
 call <sid>hi("StartifySpecial",  s:gui03, "", s:cterm03, "", "", "")
 
+" {{{ Plugin-specific styles
+""" Vim Bookmarks
+call <sid>hi("BookmarkSign","", "", s:cterm08, s:cterm01, "", "")
+call <sid>hi("BookmarkAnnotationSign","", "", s:cterm0B, s:cterm01, "", "")
+call <sid>hi("BookmarkLine","", "", "", s:cterm02, "", "")
+call <sid>hi("BookmarkAnnotationLine","", "", s:cterm05, "", "", "")
+
+""" Indent Guide
+call <sid>hi("IndentGuidesOdd", "", "", "", "", "", "")
+call <sid>hi("IndentGuidesEven", "", "", s:cterm02, s:cterm01, "", "")
+
+""" ale
+call <sid>hi("ALEWarningSign", "", "", s:cterm0A, s:cterm01, "bold", "")
+call <sid>hi("ALEErrorSign", "", "", s:cterm08, s:cterm01, "bold", "")
+
+" }}}
+
 " Remove functions
 delf <sid>hi
 

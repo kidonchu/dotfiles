@@ -25,12 +25,16 @@ set sidescrolloff=15 " start scrolling horizontally when 15 chars apart
 set sidescroll=1
 set nowrap           " don't wrap lines
 set rnu
+set number
 set numberwidth=5    " line-number column width
 set lazyredraw       " don't redraw while executing macros
 set list             " show invisible chars
 set listchars=tab:»\ ,trail:·,extends:#,nbsp:·
 set fillchars=vert:\
 set cursorline
+
+""" diff mode
+set diffopt+=vertical " Always use vertical diffs
 
 """ tabs and indenting
 set autoindent    " always set autoindenting on

@@ -1,10 +1,8 @@
-
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>:noh<cr>
 nnoremap <leader>pi :PlugInstall<cr>
+nnoremap <leader>pc :PlugClean<cr>
 
 " {{{ Buffer: u/U
-" close current buffer
-nnoremap <leader>uq :bp <bar> bd #<CR>
 " open just closed buffer
 nnoremap <leader>ut :e #<cr>
 " Move to the next buffer
@@ -25,6 +23,8 @@ nnoremap <silent> <Right> :vertical resize +5<cr>
 nnoremap <silent> <Left> :vertical resize -5<cr>
 nnoremap <silent> <Up> :resize +5<cr>
 nnoremap <silent> <Down> :resize -5<cr>
+" location window
+nnoremap <leader>l :lopen<cr>
 " }}}
 
 " {{{ Editing

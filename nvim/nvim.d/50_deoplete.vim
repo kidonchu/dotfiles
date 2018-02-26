@@ -1,9 +1,9 @@
+let g:deoplete#enable_at_startup = 1
+
 " Disable AutoComplPop
 let g:acp_enableAtStartup = 0
 " Limit suggestions
 let g:neocomplete#max_list = 100
-" Use neocomplete
-let g:neocomplete#enable_at_startup = 1
 " Use smartcase
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length
@@ -26,12 +26,12 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 " Fix conflict with multiple cursor
-function! Multiple_cursors_before()
-	exe 'NeoCompleteLock'
-endfunction
-function! Multiple_cursors_after()
-	exe 'NeoCompleteUnlock'
-endfunction
+" function! Multiple_cursors_before()
+" 	exe 'DeoCompleteLock'
+" endfunction
+" function! Multiple_cursors_after()
+" 	exe 'NeoCompleteUnlock'
+" endfunction
 
 " inoremap <expr><C-D> neocomplete#start_manual_complete('omni')
 
